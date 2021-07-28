@@ -1,0 +1,18 @@
+version: v2-alpha
+description: My Experiment
+tasks:
+  # We only have one step in our experiment, so there's only one entry in this list
+  - name: training
+    image:
+      # You will want to replace `username` below with your Beaker username
+      beaker: username/my-experiment
+    arguments: [python, -u, main.py]
+    result:
+      # Beaker will capture anything that's written to this location and store it in the results
+      # dataset.
+      path: /output
+    resources:
+      gpuCount: 1
+    context:
+      cluster: ai2/on-prem-ai2-server
+      priority: normal
