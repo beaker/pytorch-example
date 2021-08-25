@@ -19,7 +19,8 @@ WORKDIR /stage/
 # Copy the `requirements.txt` to `/stage/requirements.txt/` and then install them.
 # We do this first because it's slow and each of these commands are cached in sequence.
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt -f https://download.pytorch.org/whl/torch_st
+able.html
 
 # Copy the file `main.py` to `/stage/main.py`
 # You might need multiple of these statements to copy all the files you need for your experiment.
