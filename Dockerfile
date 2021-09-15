@@ -1,6 +1,7 @@
 # The base image, which will be the starting point for the Docker image.
-# The python:3.8 is Ubuntu with Python installed.
-FROM python:3.8
+# We're using a PyTorch image built from https://github.com/allenai/docker-images
+# because PyTorch is really big we want to install it first for caching.
+FROM ghcr.io/allenai/pytorch:1.9.0-cuda11.1-python3.8
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
