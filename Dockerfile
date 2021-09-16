@@ -1,17 +1,10 @@
 # The base image, which will be the starting point for the Docker image.
 # We're using a PyTorch image built from https://github.com/allenai/docker-images
 # because PyTorch is really big we want to install it first for caching.
-FROM ghcr.io/allenai/pytorch:1.9.0-cuda11.1-python3.8
+FROM pytorch/pytorch:1.9.0-cuda11.1-cudnn8-runtime
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
-
-# This section is needed for GPUs to work.
-ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
-
-ENV NVIDIA_VISIBLE_DEVICES all
-ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
-LABEL com.nvidia.volumes.needed="nvidia_driver"
 
 # This is the directory that files will be copied into.
 # It's also the directory that you'll start in if you connect to the image.
