@@ -6,7 +6,7 @@ tasks:
     image:
       # You will want to replace `username` below with your Beaker username
       beaker: username/my-experiment
-    arguments: [python, -u, main.py]
+    commands: [python, -u, main.py]
     result:
       # Beaker will capture anything that's written to this location and store it in the results
       # dataset.
@@ -14,5 +14,5 @@ tasks:
     resources:
       gpuCount: 1
     context:
-      cluster: ai2/on-prem-ai2-server
+      cluster: ai2/chandrab-a100-cluster
       priority: normal
